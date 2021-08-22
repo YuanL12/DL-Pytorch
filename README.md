@@ -1,5 +1,5 @@
 # DL-Pytorch
-This is a repository used to store personal learning process of Pytorch. I mainly follow the contents in https://d2l.ai/.
+This is a repository used to store personal learning process of Pytorch, published at https://yuanl12.github.io/DL-Pytorch/. I mainly follow the contents in https://d2l.ai/.
 
 ## Installation
 ```
