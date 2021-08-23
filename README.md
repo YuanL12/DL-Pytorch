@@ -14,6 +14,19 @@ pip install jupyter d2l torch torchvision
 conda install nb_conda_kernels ipykernel // for selecting different packages easily in the kernel list
 ```
 
+## Make documentation and Github pages
+In order to make pages
+```terminal
+cd docs
+make html
+```
+, then you can see it in `docs/build/html/index.html`
+
+In order to publish on Github (make sure you are still in `docs` folder), 
+```terminal
+make gh-pages
+```
+
 ## Sphinx Resoruces
 - themes
 https://sphinx-themes.org/sample-sites/sphinx-book-theme/#navigation
