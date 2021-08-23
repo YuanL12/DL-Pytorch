@@ -25,8 +25,8 @@ release = '0.1'
 
 
 # -- General configuration ---------------------------------------------------
-# sidebar title 
-html_title = "your custom sidebar title"
+# sidebar and website title 
+html_title = "Yuan Luo's Note"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
