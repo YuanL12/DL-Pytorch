@@ -18,3 +18,11 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+.PHONY: gh-pages
+.ONESHELL:
+gh-pages:
+	rm -rf /tmp/gh-pages
+	cp -r $(BUILDDIR)/html /tmp/gh-pages
+	git checkout gh-pages
+   
