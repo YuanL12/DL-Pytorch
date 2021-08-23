@@ -1,0 +1,10 @@
+## Using torch.utils.data.DataLoader as an iterator to only obtain a minibatch-sized data every time
+syntax:
+
+```
+for X, y in data_iter:
+    l = loss(net(X), y)
+```
+每次只取需要的size，避免内存浪费
+
+      

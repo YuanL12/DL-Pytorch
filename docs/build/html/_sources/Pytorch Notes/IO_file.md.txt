@@ -1,0 +1,9 @@
+https://d2l.ai/chapter_deep-learning-computation/read-write.html
+
+Read or Store model parameters (by dictionary)
+```python
+torch.save(net.state_dict(), 'mlp.params')
+clone = MLP()
+clone.load_state_dict(torch.load('mlp.params'))
+clone.eval()
+```

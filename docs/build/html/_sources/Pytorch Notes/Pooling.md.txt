@@ -1,0 +1,4 @@
+# Pooling Layer
+- Alleviate the effect of positions on the convolution layer. 
+- No parameters to learn 
+- When deal with multiple channels, pooling on each channel separately. (whereas in convolutional layer, we add up results on each input channel for each output channel) Thus, pooling will not change channel dimensions!

@@ -1,0 +1,3 @@
+1. Pytorch needs to compute the input and output size, instead of using symbolic notation in Keras. We can print output size, but inconvenient.
+2. Batch size does not need to be specified in the definition of nn.Sequential. We only need to specify input and output channel.
+3. Even if a NN uses same layers multiples times, we should still define they separately with different names, e.g., [[ResNet#Define Residual Block]]. Because their parameters are different!!

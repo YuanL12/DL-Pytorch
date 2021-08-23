@@ -1,0 +1,6 @@
+Suppose  $y \in \mathbb{R}^{m}$ and $x \in \mathbb{R}^{n}$, then
+$$
+\partial y/ \partial x \in \mathbb{R}^{m\times n} 
+$$
+
+, where each row i is a vector in $\mathbb{R}^n$ which stores the gradient of $y[i]$ to every gradient $x_j$ of $x$ for $j\in \{1,\cdots ,n \} $.

@@ -1,0 +1,15 @@
+Suppose
+1. batch size is 256
+2. there are 10 classes to be classfied
+3. Each $28 \times 28$ is flattened into a vector with size 784
+
+Then
+$$
+X \in \mathbb{R}^{256 \times 784}, W \in \mathbb{R}^{784 \times 10} , b \in \mathbb{R}^{256 \times 10}
+$$ 
+
+$$
+\hat{y} = XW + b 
+$$
+
+Every row of $X$ is a data point.
