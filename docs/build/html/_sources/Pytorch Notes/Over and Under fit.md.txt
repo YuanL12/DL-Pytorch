@@ -1,4 +1,0 @@
-# Takeaway:
-- If the test error and train error converge and there is barely no gap bettwen them, then the model is great.
-- Overfit or Underfit both shows a pattern that they have a big gap between the training and test error. 
-- The different is that underfit often happens when the training error cannot be furthur redueced after a little epochs, while overfit often happens when there is small local mimumum in the test loss, which reflects that the model is not very complex, since some parameters have not been optimized yet (think of regularization term that reduce model complexity).

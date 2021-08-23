@@ -1,5 +1,0 @@
-# How to use discrete/text variable
-One-hot encoding
-```
-all_features = pd.get_dummies(all_features, dummy_na=True)
-```
