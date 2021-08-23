@@ -2,5 +2,7 @@
 .DS_Store
 .vscode/
 
-# Sphinx documentation
-docs/_build/
+# Sphinx build files
+docs/build/
+.obsidian/
+jupyter_book/
