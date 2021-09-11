@@ -2,9 +2,9 @@
 hide-toc: true
 ---
 
-# Pytorch Notes
+# Main Page
 
-A clean customisable Sphinx documentation theme.
+A personal note documentation.  
 
 ```{include} ../../README.md
 :start-after: <!-- start DL-Pytorch -->
