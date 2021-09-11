@@ -4,3 +4,5 @@ sphinx_copybutton
 sphinx_design
 sphinx_inline_tabs
 furo
+nbsphinx
+ipykernel
