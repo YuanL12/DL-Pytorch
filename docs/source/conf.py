@@ -62,6 +62,12 @@ source_suffix = {
     '.md': 'markdown',
 }
 
+# Tell sphinx what the primary language being documented is.
+primary_domain = 'py'
+
+# Tell sphinx what the pygments highlight language should be.
+highlight_language = 'py'
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
