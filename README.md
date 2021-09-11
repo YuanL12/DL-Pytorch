@@ -15,9 +15,12 @@ conda install nb_conda_kernels ipykernel // for selecting different packages eas
 ```
 
 ## Make documentation and Github pages
-In order to make pages
+In order to make pages, I highly recommend using a separate conda environment,
 ```terminal
 cd docs
+conda create -n docu python=3
+conda activate docu
+pip install -r requriements.txt
 make html
 ```
 , then you can see it in `docs/build/html/index.html`

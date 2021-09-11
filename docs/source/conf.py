@@ -79,7 +79,7 @@ html_theme = "furo"
 
 html_theme_options = {
     # hide sidebar name
-    "sidebar_hide_name": True,
+    "sidebar_hide_name": False,
 
     ## Theme options for 'sphinx_book_theme'
     # # Github icon on the header
@@ -97,8 +97,10 @@ html_theme_options = {
 html_static_path = ['_static']
 
 # logos store in the _static folder
-html_logo = "_static/pytorch-logo.png"
-html_favicon = "_static/pytorch-favicon.ico"
+# logo appeared in side bar 
+# html_logo = "_static/pytorch-logo.png"
+# logo apperaed as favicon
+# html_favicon = "_static/pytorch-favicon.ico"
 
 
 #
@@ -108,13 +110,13 @@ extlinks = {
     "pypi": ("https://pypi.org/project/%s/", ""),
 }
 
-#
-# -- Options for intersphinx -------------------------------------------------
-#
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3", None),
-    "sphinx": ("https://www.sphinx-doc.org/en/master", None),
-}
+# #
+# # -- Options for intersphinx -------------------------------------------------
+# #
+# intersphinx_mapping = {
+#     "python": ("https://docs.python.org/3", None),
+#     "sphinx": ("https://www.sphinx-doc.org/en/master", None),
+# }
 
 #
 # -- Options for TODOs -------------------------------------------------------
