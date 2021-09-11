@@ -108,7 +108,7 @@ html_static_path = ['_static']
 # logo appeared in side bar 
 # html_logo = "_static/pytorch-logo.png"
 # logo apperaed as favicon
-# html_favicon = "_static/pytorch-favicon.ico"
+html_favicon = "_static/yuan.ico"
 
 
 #
