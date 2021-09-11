@@ -29,3 +29,11 @@ gh-pages:
 	rm -rf * && cp -r /tmp/gh-pages/* . && touch .nojekyll
 	git add . && git commit -m "Updated gh-pages" && git push origin gh-pages
 	rm -rf /tmp/gh-pages
+	git switch main
+	rm -r Pytorch\ Notes/
+	rm -r _sources
+
+.PHONY: pub-main
+.ONESHELL:
+pub-main:
+	git add . && git commit -m "Updated main brach" && git push origin main
