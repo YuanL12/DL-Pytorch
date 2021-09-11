@@ -24,7 +24,8 @@ help:
 gh-pages:
 	rm -rf /tmp/gh-pages
 	cp -r $(BUILDDIR)/html/. /tmp/gh-pages
-	cd .. 
+	pwd
+	cd ..
 	pwd
 	git checkout gh-pages
 	rm -f ** && cp -r /tmp/gh-pages/* . && touch .nojekyll
