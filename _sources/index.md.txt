@@ -7,8 +7,8 @@ hide-toc: true
 A personal note documentation.  
 
 ```{include} ../../README.md
-:start-after: <!-- start DL-Pytorch -->
-:end-before: <!-- end DL-Pytorch -->
+:start-after: <!-- start begin -->
+:end-before: <!-- end begin -->
 ```
 
 
