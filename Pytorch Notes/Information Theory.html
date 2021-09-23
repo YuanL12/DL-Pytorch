@@ -205,22 +205,24 @@
 <h1>Information Theory<a class="headerlink" href="#information-theory" title="Permalink to this headline">¶</a></h1>
 <section id="self-information">
 <h2>Self information<a class="headerlink" href="#self-information" title="Permalink to this headline">¶</a></h2>
-<p>It converts probability to bits by:$I(X) = -\log_2{p}$ for a event $X$ happen with probability $p$.
+<p>It converts probability to bits by:<span class="math notranslate nohighlight">\(I(X) = -\log_2{p}\)</span> for a event <span class="math notranslate nohighlight">\(X\)</span> happen with probability <span class="math notranslate nohighlight">\(p\)</span>.
 Note</p>
 <ul class="simple">
-<li><p>$I(X)&gt;0$ since $p\leqslant 1$.</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(X)&gt;0\)</span> since <span class="math notranslate nohighlight">\(p\leqslant 1\)</span>.</p></li>
 <li><p>An event with smaller probability has more information(bits) if happen.</p></li>
-<li><p>We can interpret the self-information ($-\log(p)$) as the amount of <em>surprise</em> we have at seeing a particular outcome.</p></li>
+<li><p>We can interpret the self-information (<span class="math notranslate nohighlight">\(-\log(p)\)</span>) as the amount of <em>surprise</em> we have at seeing a particular outcome.</p></li>
 </ul>
 </section>
 <section id="entropy">
 <h2>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">¶</a></h2>
-<p>For any random variable $X$ that follows a probability distribution $P$ with a probability density function (p.d.f.) or a probability mass function (p.m.f.) $p(x)$, we measure the expected amount of information through <em><strong>Entropy</strong></em> (or <em>Shannon entropy</em>)</p>
-<p>$$H(X) = - E_{x \sim P_X} [\log p(x)].$$</p>
+<p>For any random variable <span class="math notranslate nohighlight">\(X\)</span> that follows a probability distribution <span class="math notranslate nohighlight">\(P\)</span> with a probability density function (p.d.f.) or a probability mass function (p.m.f.) <span class="math notranslate nohighlight">\(p(x)\)</span>, we measure the expected amount of information through <em><strong>Entropy</strong></em> (or <em>Shannon entropy</em>)</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[H(X) = - E_{x \sim P_X} [\log p(x)].\]</div></div>
 <section id="joint-entropy">
 <h3>Joint Entropy<a class="headerlink" href="#joint-entropy" title="Permalink to this headline">¶</a></h3>
-<p>Similar to entropy of a single random variable, we define the <em>joint entropy</em> $H(X, Y)$ of a pair random variables $(X, Y)$ as</p>
-<p>$$H(X, Y) = −E_{(x, y) \sim P_{X, Y}} [\log p_{X, Y}(x, y)]. $$</p>
+<p>Similar to entropy of a single random variable, we define the <em>joint entropy</em> <span class="math notranslate nohighlight">\(H(X, Y)\)</span> of a pair random variables <span class="math notranslate nohighlight">\((X, Y)\)</span> as</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[H(X, Y) = −E_{(x, y) \sim P_{X, Y}} [\log p_{X, Y}(x, y)]. \]</div></div>
 </section>
 </section>
 </section>
@@ -252,7 +254,7 @@ Note</p>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2021, Graziella
+              Copyright &#169; 2021, Yuan
             |
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and
@@ -306,5 +308,7 @@ Note</p>
     <script src="../_static/tabs.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     </body>
 </html>

@@ -209,14 +209,16 @@
 <li><p>How to use several GPU.</p></li>
 <li><p>GPU parallelism.</p></li>
 </ul>
-<section id="tensor">
-<h2>Tensor 直接初始化<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h2>
+<section id="tensor-initial">
+<h2>Tensor Initial<a class="headerlink" href="#tensor-initial" title="Permalink to this headline">¶</a></h2>
+<p>Tensor can be initialized directly on the GPU.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">try_gpu</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
-<section id="nn-module-to-device">
-<h2>nn.Module 用<code class="docutils literal notranslate"><span class="pre">.to(device</span> <span class="pre">=</span> <span class="pre">)</span></code><a class="headerlink" href="#nn-module-to-device" title="Permalink to this headline">¶</a></h2>
+<section id="nn-module">
+<h2>nn.Module<a class="headerlink" href="#nn-module" title="Permalink to this headline">¶</a></h2>
+<p>Using <code class="docutils literal notranslate"><span class="pre">.to(device</span> <span class="pre">=</span> <span class="pre">)</span></code> to create module on GPU.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">net</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">try_gpu</span><span class="p">())</span>
 </pre></div>
@@ -251,7 +253,7 @@
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2021, Graziella
+              Copyright &#169; 2021, Yuan
             |
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and
@@ -279,8 +281,8 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">GPU Usage</a><ul>
-<li><a class="reference internal" href="#tensor">Tensor 直接初始化</a></li>
-<li><a class="reference internal" href="#nn-module-to-device">nn.Module 用<code class="docutils literal notranslate"><span class="pre">.to(device</span> <span class="pre">=</span> <span class="pre">)</span></code></a></li>
+<li><a class="reference internal" href="#tensor-initial">Tensor Initial</a></li>
+<li><a class="reference internal" href="#nn-module">nn.Module</a></li>
 </ul>
 </li>
 </ul>
