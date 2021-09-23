@@ -1,5 +1,12 @@
 # DL-Pytorch
 
+<!-- start begin -->
+
+This is a documentation used to store personal notes for self-learning and class materials. The reason for maintaining this documentation is that graduate study often covers tremendous topics and recording all of them on paper is hard for future review and usage. At the same time, I also hope readers who happen to visit this documentation can learn something from it. 
+
+<!-- end begin -->
+
+
 <!-- start DL-Pytorch -->
 
 This is a repository used to store personal learning process of Pytorch, published at https://yuanl12.github.io/DL-Pytorch/. I mainly follow the contents in https://d2l.ai/.
