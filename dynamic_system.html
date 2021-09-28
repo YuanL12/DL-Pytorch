@@ -2,10 +2,12 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
-    <link rel="shortcut icon" href="_static/yuan.ico"/><meta name="generator" content="sphinx-4.1.2, furo 2021.08.17.beta43"/><title>Index - Yuan Luo&#39;s Note</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="shortcut icon" href="_static/yuan.ico"/><meta name="generator" content="sphinx-4.1.2, furo 2021.08.17.beta43"/>
+        <title>Dynamical system - Yuan Luo&#39;s Note</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=910ac4ccc9d7c023151c34010d7b500fb9777a51" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
@@ -133,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -167,10 +169,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Pytorch%20Notes/prepocessing.html">Dataset and its Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pytorch%20Notes/Object%20Detection%20and%20Bounding%20Boxes.html">Object Detection and Bounding Boxes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pytorch%20Notes/RNN.html">Recursive Neural Network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Pytorch%20Notes/Transformer%20and%20RSA.html">DL model with RSA</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_system.html">Dynamical system</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -196,15 +196,46 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        
-<section class="genindex-section">
-  <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"></div>
+        <section class="tex2jax_ignore mathjax_ignore" id="dynamical-system">
+<h1>Dynamical system<a class="headerlink" href="#dynamical-system" title="Permalink to this headline">¶</a></h1>
+<section id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p>Primary focus is to solve ODEs:
+<span class="math notranslate nohighlight">\(\dot{X} = f(X; \mu)\)</span>, also called  parameterised family of dynamic systems, <span class="math notranslate nohighlight">\(\mu\)</span> is the parameter. Solution is called <strong>trajectory</strong>.</p>
+<p>If <span class="math notranslate nohighlight">\(\dot{X} = f(X)\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is time-independent, then it is called autonomous.</p>
+<p>If <span class="math notranslate nohighlight">\(\dot{X} = f(X,t)\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is explicitlt time-dependent, then it is called non-autonomous.</p>
+<p><strong>Dynamical system</strong> is an evolution rule that defines a trajectory as a function of a single real parameter (time) on a set of states or the phase space.</p>
+<p>For example,
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\lim_{t \to \infty} x(t) = \hat{x_1} \text{, if } x(0) \in S_1\\
+\lim_{t \to \infty} x(t) = \hat{x_2} \text{, if } x(0) \in S_2
+\end{split}\]</div></div>
+
+Bistable system, <span class="math notranslate nohighlight">\(S_1, S_2\)</span> are basins of attraction for <span class="math notranslate nohighlight">\(x_1, x_2\)</span></p>
+<p>Convert nth order diff equation into n first order</p>
+<blockquote>
+<div><p>double dot, big curly bracket</p>
+</div></blockquote>
+<p>e.g. <span class="math notranslate nohighlight">\(m \dot{X} = f(x) , x\in \mathbb{R}\)</span> let
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\dot{X}=v\\
+\dot{v}=\frac{1}{m} f(x)
+\end{split}\]</div></div>
+</p>
+<p>Idealized pendulum
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[
+ml 
+\]</div></div>
+</p>
+</section>
 </section>
 
       </article>
@@ -222,12 +253,36 @@
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/dynamic_system.md.txt"
+               rel="nofollow">
+              Show Source
+            </a>
         </div>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Dynamical system</a><ul>
+<li><a class="reference internal" href="#intro">Intro</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -242,5 +297,7 @@
     <script src="_static/tabs.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     </body>
 </html>
