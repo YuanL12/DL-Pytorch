@@ -21,7 +21,6 @@ usage
 :caption: Notes
 :hidden:
 Pytorch Notes/index
-dynamic_system
 ```
 
 
