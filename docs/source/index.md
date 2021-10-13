@@ -20,7 +20,8 @@ usage
 ```{toctree}
 :caption: Notes
 :hidden:
-Pytorch Notes/index
+Pytorch/index
+Spectral Method/index
 ```
 
 

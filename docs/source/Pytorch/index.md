@@ -1,4 +1,4 @@
-# Pytorch Notes
+# Pytorch
 
 This is a personal Pytorch Notes! ✨
 
