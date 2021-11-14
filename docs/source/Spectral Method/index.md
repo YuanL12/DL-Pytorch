@@ -6,4 +6,5 @@ Course Notes from STAT 37797 (Autumn 2021) Topics in Mathematical Data Science: 
 :hidden:
 
 perturbation theory
+SBM
 ```
