@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Recursive Neural Network" href="RNN.html" /><link rel="prev" title="Dataset and its Preprocessing" href="prepocessing.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="License" href="../license.html" /><link rel="prev" title="Spectral Method" href="index.html" />
 
     <link rel="shortcut icon" href="../_static/yuan.ico"/><meta name="generator" content="sphinx-4.1.2, furo 2021.08.17.beta43"/>
-        <title>Object Detection and Bounding Boxes - Yuan Luo&#39;s Note</title>
+        <title>l2 Perturbation Theory - Yuan Luo&#39;s Note</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=910ac4ccc9d7c023151c34010d7b500fb9777a51" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -160,16 +160,20 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Notes</span></p>
 <ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Pytorch Notes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="GPU.html">GPU Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="GoogLeNet.html">GoogLeNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Morden_RNN.html">Moder Neural Network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Information%20Theory.html">Information Theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="NLP.html">Natural Language Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepocessing.html">Dataset and its Preprocessing</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Object Detection and Bounding Boxes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RNN.html">Recursive Neural Network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Transformer%20and%20RSA.html">DL model with RSA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Pytorch/index.html">Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/GPU.html">GPU Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/GoogLeNet.html">GoogLeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/Morden_RNN.html">Moder Neural Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/Information%20Theory.html">Information Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/NLP.html">Natural Language Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/prepocessing.html">Dataset and its Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/Object%20Detection%20and%20Bounding%20Boxes.html">Object Detection and Bounding Boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/RNN.html">Recursive Neural Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Pytorch/Transformer%20and%20RSA.html">DL model with RSA</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Spectral Method</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">l2 Perturbation Theory</a></li>
 </ul>
 </li>
 </ul>
@@ -202,57 +206,83 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <section class="tex2jax_ignore mathjax_ignore" id="object-detection-and-bounding-boxes">
-<h1>Object Detection and Bounding Boxes<a class="headerlink" href="#object-detection-and-bounding-boxes" title="Permalink to this headline">¶</a></h1>
-<section id="bounding-boxes">
-<h2>Bounding Boxes<a class="headerlink" href="#bounding-boxes" title="Permalink to this headline">¶</a></h2>
-<p>To represent a box, we need four numbers. We provide 2 ways of representing a box and their transferring functions here:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">box_corner_to_center</span><span class="p">(</span><span class="n">boxes</span><span class="p">):</span>
-
-    <span class="sd">"""Convert from (upper-left, lower-right) to (center, width, height).</span>
-<span class="sd">    input: boxes m x 4 list, every row is a box and every column is a number. </span>
-<span class="sd">    """</span>
-    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
-    <span class="n">cx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="n">cy</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1</span> <span class="o">+</span> <span class="n">y2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span>
-    <span class="n">boxes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">boxes</span>
-
-<span class="k">def</span> <span class="nf">box_center_to_corner</span><span class="p">(</span><span class="n">boxes</span><span class="p">):</span>
-    <span class="sd">"""Convert from (center, width, height) to (upper-left, lower-right)."""</span>
-    <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span>
-    <span class="n">y1</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span>
-    <span class="n">boxes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">boxes</span>
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bbox_to_rect</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-    <span class="sd">"""Convert bounding box to matplotlib format."""</span>
-    <span class="c1"># Convert the bounding box (upper-left x, upper-left y, lower-right x,</span>
-    <span class="c1"># lower-right y) format to the matplotlib format: ((upper-left x,</span>
-    <span class="c1"># upper-left y), width, height)</span>
-    <span class="k">return</span> <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span>
-        <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
-        <span class="n">width</span><span class="o">=</span><span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="n">height</span><span class="o">=</span><span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
-        <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-        <span class="n">edgecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">d2l</span><span class="o">.</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">bbox_to_rect</span><span class="p">(</span><span class="n">dog_bbox</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">bbox_to_rect</span><span class="p">(</span><span class="n">cat_bbox</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">));</span>
-</pre></div>
-</div>
+        <section class="tex2jax_ignore mathjax_ignore" id="l2-perturbation-theory">
+<h1>l2 Perturbation Theory<a class="headerlink" href="#l2-perturbation-theory" title="Permalink to this headline">¶</a></h1>
+<section id="lemma">
+<h2>Lemma<a class="headerlink" href="#lemma" title="Permalink to this headline">¶</a></h2>
+<p>The following identities are true:
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+\left\|\boldsymbol{U} \boldsymbol{U}^{\top}-\boldsymbol{U}^{\star} \boldsymbol{U}^{\star \top}\right\|=\|\sin \boldsymbol{\Theta}\|=\left\|\boldsymbol{U}_{\perp}^{\top} \boldsymbol{U}^{\star}\right\|=\left\|\boldsymbol{U}^{\top} \boldsymbol{U}_{\perp}^{\star}\right\| \\
+\frac{1}{\sqrt{2}}\left\|\boldsymbol{U} \boldsymbol{U}^{\top}-\boldsymbol{U}^{\star} \boldsymbol{U}^{\star \top}\right\|_{\mathrm{F}}=\|\sin \boldsymbol{\Theta}\|_{\mathrm{F}}=\left\|\boldsymbol{U}_{\perp}^{\top} \boldsymbol{U}^{\star}\right\|_{\mathrm{F}}=\left\|\boldsymbol{U}^{\top} \boldsymbol{U}_{\perp}^{\star}\right\|_{\mathrm{F}}
+\end{gathered}
+\end{split}\]</div></div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+\left\|\boldsymbol{U} \boldsymbol{U}^{\top}-\boldsymbol{U}^{\star} \boldsymbol{U}^{\star \top}\right\| \leq \min _{\boldsymbol{m} \in \mathcal{O}^{r \times r}}\left\|\boldsymbol{U} \boldsymbol{R}-\boldsymbol{U}^{\star}\right\| \leq \sqrt{2}\left\|\boldsymbol{U} \boldsymbol{U}^{\top}-\boldsymbol{U}^{\star} \boldsymbol{U}^{\star T}\right\| ; \\
+\frac{1}{\sqrt{2}}\left\|\boldsymbol{U} \boldsymbol{U}^{\top}-\boldsymbol{U}^{\star} \boldsymbol{U}^{\star \top}\right\|_{\mathrm{F}} \leq \min _{\boldsymbol{R} \in \mathcal{O}^{\star} \times \boldsymbol{r}}\left\|\boldsymbol{U} \boldsymbol{R}-\boldsymbol{U}^{\star}\right\|_{\mathrm{F}} \leq\left\|\boldsymbol{U} \boldsymbol{U}^{\top}-\boldsymbol{U}^{\star} \boldsymbol{U}^{\star \top}\right\|_{\mathrm{F}} .
+\end{gathered}
+\end{split}\]</div></div>
+</p>
 </section>
-<section id="anchor-boxes">
-<h2>Anchor Boxes<a class="headerlink" href="#anchor-boxes" title="Permalink to this headline">¶</a></h2>
-<p>Used to train ground-truth bounding box.</p>
+<section id="theorems">
+<h2>Theorems<a class="headerlink" href="#theorems" title="Permalink to this headline">¶</a></h2>
+<p>We use the Distance modulo optimal rotation
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\operatorname{dist}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right) &amp;:=\min _{\boldsymbol{R} \in \mathcal{O}^{r} \times r}\left\|\boldsymbol{U} \boldsymbol{R}-\boldsymbol{U}^{\star}\right\| \\
+\operatorname{dist}_{\mathrm{F}}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right) &amp;:=\min _{\boldsymbol{R} \in \mathcal{O}^{r \times r}}\left\|\boldsymbol{U} \boldsymbol{R}-\boldsymbol{U}^{\star}\right\|_{\mathrm{F}}
+\end{aligned}
+\end{split}\]</div></div>
+</p>
+<div class="note admonition">
+<p class="admonition-title">Davis-Kahan’s <span class="math notranslate nohighlight">\(sin \boldsymbol{\Theta}\)</span> theorem(simple version).</p>
+<p>Suppose <span class="math notranslate nohighlight">\(\boldsymbol{M}^{\star} \succeq \mathbf{0}\)</span> and is rank-r. If <span class="math notranslate nohighlight">\(\|\boldsymbol{E}\|&lt;(1-1 / \sqrt{2}) \lambda_{r}\left(\boldsymbol{M}^{\star}\right)\)</span>, then
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+\operatorname{dist}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right) \leq \sqrt{2}\|\sin \boldsymbol{\Theta}\| \leq \frac{2\left\|\boldsymbol{E} \boldsymbol{U}^{\star}\right\|}{\lambda_{r}\left(\boldsymbol{M}^{\star}\right)} \leq \frac{2\|\boldsymbol{E}\|}{\lambda_{r}\left(\boldsymbol{M}^{\star}\right)} \\
+\operatorname{dist}_{F}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right) \leq \sqrt{2}\|\sin \boldsymbol{\Theta}\|_{\mathrm{F}} \leq \frac{2\left\|\boldsymbol{E} \boldsymbol{U}^{\star}\right\|_{\mathrm{F}}}{\lambda_{r}\left(\boldsymbol{M}^{\star}\right)} \leq \frac{2 \sqrt{r}\|\boldsymbol{E}\|}{\lambda_{r}\left(\boldsymbol{M}^{\star}\right)}
+\end{gathered}
+\end{split}\]</div></div>
+</p>
+</div>
+<section id="davis-kahans-sin-boldsymbol-theta-theorem-general-version">
+<h3>Davis-Kahan’s <span class="math notranslate nohighlight">\(sin \boldsymbol{\Theta}\)</span> theorem(General version)<a class="headerlink" href="#davis-kahans-sin-boldsymbol-theta-theorem-general-version" title="Permalink to this headline">¶</a></h3>
+<p>Assume that
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp;\text { eigenvalues }\left(\boldsymbol{\Lambda}^{\star}\right) \subseteq(-\infty, \alpha-\Delta] \cup[\beta+\Delta, \infty) \\
+&amp;\operatorname{eigenvalues}\left(\boldsymbol{\Lambda}_{\perp}\right) \subseteq[\alpha, \beta]
+\end{aligned}
+\end{split}\]</div></div>
+
+for some quantities <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{R}\)</span> and eigengap <span class="math notranslate nohighlight">\(\Delta&gt;0\)</span>. Then one has
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+\operatorname{dist}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right) \leq \sqrt{2}\|\sin \boldsymbol{\Theta}\| \leq \frac{\sqrt{2}\left\|\boldsymbol{E} \boldsymbol{U}^{\star}\right\|}{\Delta} \leq \frac{\sqrt{2}\|\boldsymbol{E}\|}{\Delta} \\
+\operatorname{dist}_{\mathrm{F}}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right) \leq \sqrt{2}\|\sin \boldsymbol{\Theta}\|_{\mathrm{F}} \leq \frac{\sqrt{2}\left\|\boldsymbol{E} \boldsymbol{U}^{\star}\right\|_{\mathrm{F}}}{\Delta} \leq \frac{\sqrt{2 r}\|\boldsymbol{E}\|}{\Delta}
+\end{gathered}
+\end{split}\]</div></div>
+</p>
+</section>
+<section id="wedins-sin-theorem">
+<h3>Wedin’s sinΘ theorem<a class="headerlink" href="#wedins-sin-theorem" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\|\boldsymbol{E}\|&lt;\sigma_{r}^{\star}-\sigma_{r+1}^{\star}\)</span>, then one has
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+\max \left\{\operatorname{dist}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right), \operatorname{dist}\left(\boldsymbol{V}, \boldsymbol{V}^{\star}\right)\right\} \leq \frac{\sqrt{2} \max \left\{\left\|\boldsymbol{E}^{\top} \boldsymbol{U}^{\star}\right\|,\left\|\boldsymbol{E} \boldsymbol{V}^{\star}\right\|\right\}}{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\boldsymbol{E}\|} \\
+\max \left\{\operatorname{dist}_{\mathrm{F}}\left(\boldsymbol{U}, \boldsymbol{U}^{\star}\right), \operatorname{dist}_{\mathrm{F}}\left(\boldsymbol{V}, \boldsymbol{V}^{\star}\right)\right\} \leq \frac{\sqrt{2} \max \left\{\left\|\boldsymbol{E}^{\top} \boldsymbol{U}^{\star}\right\|_{\mathrm{F}},\left\|\boldsymbol{E} \boldsymbol{V}^{\star}\right\|_{\mathrm{F}}\right\}}{\sigma_{r}^{\star}-\sigma_{r+1}^{\star}-\|\boldsymbol{E}\|}
+\end{gathered}
+\end{split}\]</div></div>
+</p>
+</section>
 </section>
 </section>
 
@@ -260,23 +290,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="RNN.html">
+          <a class="next-page" href="../license.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Recursive Neural Network</div>
+                <div class="title">License</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="prepocessing.html">
+          <a class="prev-page" href="index.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Dataset and its Preprocessing</div>
+                <div class="title">Spectral Method</div>
                 
               </div>
             </a>
@@ -290,7 +320,7 @@
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="../_sources/Pytorch Notes/Object Detection and Bounding Boxes.md.txt"
+            <a class="muted-link" href="../_sources/Spectral Method/perturbation theory.md.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -310,9 +340,13 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Object Detection and Bounding Boxes</a><ul>
-<li><a class="reference internal" href="#bounding-boxes">Bounding Boxes</a></li>
-<li><a class="reference internal" href="#anchor-boxes">Anchor Boxes</a></li>
+<li><a class="reference internal" href="#">l2 Perturbation Theory</a><ul>
+<li><a class="reference internal" href="#lemma">Lemma</a></li>
+<li><a class="reference internal" href="#theorems">Theorems</a><ul>
+<li><a class="reference internal" href="#davis-kahans-sin-boldsymbol-theta-theorem-general-version">Davis-Kahan’s <span class="math notranslate nohighlight">\(sin \boldsymbol{\Theta}\)</span> theorem(General version)</a></li>
+<li><a class="reference internal" href="#wedins-sin-theorem">Wedin’s sinΘ theorem</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -334,5 +368,7 @@
     <script src="../_static/tabs.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     </body>
 </html>
