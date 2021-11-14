@@ -32,6 +32,11 @@ make html
 ```
 , then you can see it in `docs/build/html/index.html`
 
+Now we want to update the remote repository, 
+```terminal
+make pub-main
+```
+
 In order to publish on Github (make sure you are still in `docs` folder), 
 ```terminal
 make gh-pages
