@@ -22,6 +22,7 @@ usage
 :hidden:
 Pytorch/index
 Spectral Method/index
+Graphic NN/index
 ```
 
 
